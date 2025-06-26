@@ -17,6 +17,7 @@ RUN echo "===> CECI EST MON DOCKERFILE SYMFONY <==="
 # 2. Install les dépendances SANS exécuter les scripts auto (pas de post-install-cmd)
 RUN composer install --ignore-platform-reqs --no-scripts --no-autoloader
 
+
 # 3. Copie tout le reste du projet (y compris src/Entity, etc)
 COPY . .
 
