@@ -12,17 +12,15 @@ WORKDIR /app
 COPY composer.json composer.lock ./
 
 RUN echo "===> CECI EST MON DOCKERFILE SYMFONY <==="
-# 1. Installe les dépendances de composer (sans exécuter les scripts auto)
 
-# 2. Install les dépendances SANS exécuter les scripts auto (pas de post-install-cmd)
+# 2. Installe les dépendances SANS exécuter les scripts auto (pas de post-install-cmd)
 RUN composer install --ignore-platform-reqs --no-scripts --no-autoloader
-
 
 # 3. Copie tout le reste du projet (y compris src/Entity, etc)
 COPY . .
 
 # 4. Re-génère l’autoload et exécute les scripts (cache:clear, etc)
-RUN composer dump-autoload --no-scripts --no-dev --optimize \
+RUN composer dump-autoload --no-scripts --optimize \
     && composer run-script post-install-cmd
 
 CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
