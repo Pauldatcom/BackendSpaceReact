@@ -11,6 +11,8 @@ WORKDIR /app
 # 1. Copie juste composer.json/lock au début
 COPY composer.json composer.lock ./
 
+RUN echo "===> CECI EST MON DOCKERFILE SYMFONY <==="
+
 # 2. Install les dépendances SANS exécuter les scripts auto (pas de post-install-cmd)
 RUN composer install --ignore-platform-reqs --no-scripts --no-autoloader
 
