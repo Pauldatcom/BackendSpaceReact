@@ -23,4 +23,4 @@ COPY . .
 RUN composer dump-autoload --no-scripts --no-dev --optimize \
     && composer run-script post-install-cmd
 
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+CMD ["php", "-S", "0.0.0.0:8080", "-t", "public"]
