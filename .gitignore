@@ -19,7 +19,7 @@
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
-.env
+
 node_modules/
 
 .idea/
